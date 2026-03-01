@@ -38,23 +38,27 @@ export const Gallery: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20">
           <div className="max-w-2xl">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="text-secondary font-black uppercase tracking-[0.4em] text-sm block mb-4"
             >
               OUR PORTFOLIO
             </motion.span>
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="text-4xl md:text-7xl font-serif font-black text-primary leading-[1]"
             >
               Recent Masterpieces
             </motion.h2>
           </div>
-          <Link 
-            to="/portfolio" 
+          <Link
+            to="/portfolio"
             className="hidden md:flex items-center gap-3 text-secondary font-black uppercase tracking-widest text-sm hover:text-orange-700 transition-all mt-4 md:mt-0"
           >
             <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3">
@@ -67,13 +71,12 @@ export const Gallery: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
             <motion.div
-              layoutId={`card-container-${project.id}`}
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group relative overflow-hidden rounded-[2.5rem] cursor-pointer shadow-2xl bg-white aspect-[4/5] card-3d-hover"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: idx * 0.08, duration: 0.4, ease: "easeOut" }}
+              className="group relative overflow-hidden rounded-[2.5rem] cursor-pointer shadow-2xl bg-white aspect-[4/5] will-change-transform hover:-translate-y-3 transition-transform duration-300"
               onClick={() => setSelectedId(project.id)}
             >
               <img
@@ -103,9 +106,10 @@ export const Gallery: React.FC = () => {
             {transformations.map((item, index) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100"
               >
                 <div className="grid md:grid-cols-2 relative h-[500px]">
@@ -133,12 +137,12 @@ export const Gallery: React.FC = () => {
         <AnimatePresence>
           {selectedId && (
             <motion.div
-              layoutId={`card-container-${selectedId}`}
               className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-primary/95 backdrop-blur-2xl"
               onClick={() => setSelectedId(null)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
               <motion.div
                 className="bg-white rounded-[3rem] overflow-hidden max-w-6xl w-full relative shadow-2xl flex flex-col md:flex-row h-full max-h-[85vh]"
@@ -150,7 +154,7 @@ export const Gallery: React.FC = () => {
                 >
                   <X className="text-primary w-8 h-8" />
                 </button>
-                
+
                 {(() => {
                   const project = projects.find((p) => p.id === selectedId);
                   return project ? (
@@ -164,12 +168,12 @@ export const Gallery: React.FC = () => {
                         <p className="text-gray-600 text-lg leading-relaxed mb-10 font-medium">
                           Our team delivered a premium finish for this {project.cat} project in Karachi, using top-tier materials and precision tools.
                         </p>
-                        <motion.button 
+                        <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => {
-                              setSelectedId(null);
-                              document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'});
+                            setSelectedId(null);
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                           }}
                           className="bg-secondary text-white py-5 px-10 rounded-2xl font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-orange-600 transition-colors"
                         >

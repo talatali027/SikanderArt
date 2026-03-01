@@ -3,6 +3,7 @@ import React from 'react';
 import { Palette, Facebook, Instagram, Phone, Mail, MapPin, Send, Video } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Logo5 } from './Logos';
 
 export const Footer: React.FC = () => {
   return (
@@ -11,24 +12,17 @@ export const Footer: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
-          
+
           {/* Brand & About */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <div className="flex items-center gap-3 mb-10 group cursor-default">
-              <div className="p-4 bg-secondary rounded-[1.25rem] shadow-2xl group-hover:rotate-12 transition-transform duration-500">
-                <Palette className="w-8 h-8 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-3xl font-serif font-black tracking-tighter uppercase leading-none">
-                  SIKANDER <span className="text-secondary">ART</span>
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-orange-200 mt-1">
-                  Professional Finishers
-                </span>
+              <div className="-mt-1 lg:-mt-2">
+                <Logo5 isSolidNav={true} />
               </div>
             </div>
             <p className="text-gray-300 mb-10 leading-relaxed font-medium text-lg">
@@ -40,9 +34,9 @@ export const Footer: React.FC = () => {
                 { icon: Video, href: "#", name: "TikTok" }, // Using Video icon for TikTok as requested
                 { icon: Instagram, href: "#", name: "Instagram" }
               ].map((social, i) => (
-                <motion.a 
+                <motion.a
                   key={i}
-                  href={social.href} 
+                  href={social.href}
                   whileHover={{ scale: 1.2, backgroundColor: "#f97316" }}
                   whileTap={{ scale: 0.9 }}
                   className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all text-white shadow-xl relative group"
@@ -57,10 +51,10 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
           >
             <h4 className="text-lg font-black mb-10 uppercase tracking-[0.3em] text-secondary border-l-4 border-secondary pl-6">Explore</h4>
             <ul className="space-y-6">
@@ -90,10 +84,10 @@ export const Footer: React.FC = () => {
 
           {/* Contact Details */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
           >
             <h4 className="text-lg font-black mb-10 uppercase tracking-[0.3em] text-secondary border-l-4 border-secondary pl-6">Get In Touch</h4>
             <ul className="space-y-8">
@@ -103,7 +97,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Call Us</p>
-                  <a href="tel:+928282569675" className="text-xl font-bold text-white hover:text-secondary transition-colors">+92 828 256 96 75</a>
+                  <a href="tel:+928282569675" className="text-xl font-bold text-white hover:text-secondary transition-colors">+92 302 291 10 88</a>
                 </div>
               </li>
               <li className="flex items-start gap-5 group">
@@ -121,7 +115,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Visit Us</p>
-                  <p className="text-xl font-bold text-white">123 Paint Street, Karachi, Pakistan</p>
+                  <p className="text-xl font-bold text-white">Kharadar, Karachi, Pakistan</p>
                 </div>
               </li>
             </ul>
@@ -129,20 +123,20 @@ export const Footer: React.FC = () => {
 
           {/* Newsletter / CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.3, duration: 0.4, ease: "easeOut" }}
           >
             <h4 className="text-lg font-black mb-10 uppercase tracking-[0.3em] text-secondary border-l-4 border-secondary pl-6">Newsletter</h4>
             <p className="text-gray-300 mb-8 font-medium text-lg leading-relaxed">Subscribe for premium paint tips and exclusive offers in Karachi.</p>
             <form className="relative group" onSubmit={e => e.preventDefault()}>
-              <input 
-                type="email" 
-                placeholder="Your Email" 
+              <input
+                type="email"
+                placeholder="Your Email"
                 className="w-full px-8 py-5 rounded-2xl bg-white/5 border-2 border-white/10 focus:border-secondary focus:outline-none text-white placeholder-gray-500 font-bold transition-all pr-16"
               />
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.1, rotate: 10 }}
                 whileTap={{ scale: 0.9 }}
                 className="absolute right-3 top-3 bottom-3 aspect-square bg-secondary rounded-xl flex items-center justify-center text-white shadow-2xl"

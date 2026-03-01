@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
                       </div>
                       <div>
                         <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Phone</p>
-                        <p className="text-lg font-bold text-gray-800">+92 828 256 96 75</p>
+                        <p className="text-lg font-bold text-gray-800">+92 302 291 10 88</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -145,7 +145,7 @@ const Contact: React.FC = () => {
                       </div>
                       <div>
                         <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Address</p>
-                        <p className="text-lg font-bold text-gray-800">123 Paint Street, Karachi, Pakistan</p>
+                        <p className="text-lg font-bold text-gray-800">Kharadar, Karachi, Pakistan</p>
                       </div>
                     </div>
                   </div>

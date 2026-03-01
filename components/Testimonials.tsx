@@ -52,16 +52,18 @@ export const Testimonials: React.FC = () => {
     <section className="py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-24">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="text-secondary font-black uppercase tracking-[0.4em] text-sm block mb-4"
           >
             TESTIMONIALS
           </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, scale: 0.9 }}
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-4xl md:text-6xl font-serif font-black text-primary leading-[1]"
           >
             What Our Clients Say
@@ -72,21 +74,21 @@ export const Testimonials: React.FC = () => {
           <div className="absolute -top-20 left-0 text-slate-100/50 -z-10 transform scale-[2.5] select-none">
             <Quote size={200} />
           </div>
-          
+
           <div className="relative z-10 min-h-[400px] flex items-center justify-center">
             <AnimatePresence mode="wait" initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
                 custom={direction}
-                initial={{ opacity: 0, x: direction > 0 ? 100 : -100, scale: 0.9 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: direction > 0 ? -100 : 100, scale: 0.9 }}
-                transition={{ type: "spring", damping: 25, stiffness: 120 }}
-                className="text-center px-4 md:px-20"
+                initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="text-center px-4 md:px-20 will-change-transform"
               >
                 <div className="mb-10 flex justify-center gap-2">
                   {[...Array(5)].map((_, i) => (
-                    <motion.div 
+                    <motion.div
                       key={i}
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
@@ -96,16 +98,16 @@ export const Testimonials: React.FC = () => {
                     </motion.div>
                   ))}
                 </div>
-                
+
                 <p className="text-2xl md:text-4xl text-gray-800 italic font-serif leading-[1.4] mb-12 tracking-tight">
                   "{testimonials[currentIndex].content}"
                 </p>
-                
+
                 <div className="flex flex-col items-center">
                   <div className="relative mb-6">
                     <div className="absolute inset-0 bg-secondary rounded-full blur-md opacity-30 animate-pulse"></div>
-                    <img 
-                      src={testimonials[currentIndex].image} 
+                    <img
+                      src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].name}
                       className="relative w-24 h-24 rounded-full object-cover border-4 border-white shadow-2xl"
                     />
@@ -118,7 +120,7 @@ export const Testimonials: React.FC = () => {
           </div>
 
           <div className="flex justify-center gap-8 mt-16">
-            <motion.button 
+            <motion.button
               whileHover={{ scale: 1.2, x: -5 }}
               whileTap={{ scale: 0.8 }}
               onClick={handlePrev}
@@ -127,7 +129,7 @@ export const Testimonials: React.FC = () => {
             >
               <ChevronLeft size={28} />
             </motion.button>
-            <motion.button 
+            <motion.button
               whileHover={{ scale: 1.2, x: 5 }}
               whileTap={{ scale: 0.8 }}
               onClick={handleNext}

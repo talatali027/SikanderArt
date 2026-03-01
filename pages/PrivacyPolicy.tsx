@@ -111,7 +111,7 @@ const policySections: PolicySection[] = [
     content: [
       "Company: Sikander Arts",
       "Location: Karachi, Pakistan",
-      "Phone: +92 828 256 96 75",
+      "Phone: +92 302 291 10 88",
       "Email: sikanderpaint@example.com",
       "WhatsApp: +92 3XX XXXXXXX",
       "Working Hours: Monday to Saturday, 9:00 AM to 7:00 PM"

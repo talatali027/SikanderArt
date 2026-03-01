@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Palette, Calculator, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { Logo5 } from './Logos';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,21 +30,21 @@ export const Navbar: React.FC = () => {
   ];
 
   const menuVariants = {
-    closed: { 
-      opacity: 0, 
+    closed: {
+      opacity: 0,
       y: -20,
-      transition: { 
+      transition: {
         staggerChildren: 0.05,
         staggerDirection: -1
-      } 
+      }
     },
-    open: { 
-      opacity: 1, 
+    open: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         staggerChildren: 0.1,
         delayChildren: 0.2
-      } 
+      }
     }
   };
 
@@ -54,32 +55,26 @@ export const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        isSolidNav
-          ? 'bg-primary/95 backdrop-blur-xl shadow-2xl py-3'
-          : 'bg-transparent py-6'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-500 ${isSolidNav
+        ? 'bg-primary/95 backdrop-blur-xl shadow-2xl py-3'
+        : 'bg-transparent py-6'
+        }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center gap-3 group"
           >
-            <motion.div whileHover={{ scale: 1.02 }} className="flex items-center gap-3">
-              <div className={`p-2.5 rounded-xl transition-all duration-500 shadow-lg ${isSolidNav ? 'bg-secondary' : 'bg-white'}`}>
-                <Palette className={`w-7 h-7 ${isSolidNav ? 'text-white' : 'text-primary'}`} />
+            <div className="flex items-center gap-3 mr-2 sm:mr-4">
+              {/* <div className={`p-2.5 rounded-xl transition-all duration-500 shadow-lg ${isSolidNav ? 'bg-secondary' : 'bg-white/90 backdrop-blur-sm'}`}>
+                <Palette className={`w-7 h-7 sm:w-8 sm:h-8 ${isSolidNav ? 'text-white' : 'text-primary'}`} />
+              </div> */}
+              <div className="-mt-1 lg:-mt-2">
+                <Logo5 isSolidNav={isSolidNav} />
               </div>
-              <div className="flex flex-col">
-                <span className={`text-2xl font-serif font-black tracking-tighter uppercase ${isSolidNav ? 'text-white' : 'text-white drop-shadow-lg'}`}>
-                  SIKANDER <span className="text-secondary">ART</span>
-                </span>
-                <span className={`text-[10px] font-bold uppercase tracking-[0.2em] -mt-1 transition-colors ${isSolidNav ? 'text-blue-200' : 'text-orange-100'}`}>
-                  Professional Painting Contractors
-                </span>
-              </div>
-            </motion.div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -93,9 +88,8 @@ export const Navbar: React.FC = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className={`text-sm font-bold transition-all relative group flex items-center gap-1.5 py-2 uppercase tracking-widest ${
-                    isSolidNav ? 'text-gray-100' : 'text-white drop-shadow-sm'
-                  } hover:text-secondary`}
+                  className={`text-sm font-bold transition-all relative group flex items-center gap-1.5 py-2 uppercase tracking-widest ${isSolidNav ? 'text-gray-100' : 'text-white drop-shadow-sm'
+                    } hover:text-secondary`}
                 >
                   {link.name === 'Calculator' && <Calculator size={14} className="text-secondary" />}
                   {link.name}
@@ -149,7 +143,7 @@ export const Navbar: React.FC = () => {
                     variants={linkVariants}
                     className="text-white text-3xl font-black hover:text-secondary px-4 py-4 rounded-xl hover:bg-white/5 transition-all flex items-center gap-6"
                   >
-                    <span className="text-secondary opacity-30">0{i+1}</span>
+                    <span className="text-secondary opacity-30">0{i + 1}</span>
                     {link.name}
                   </motion.div>
                 </Link>

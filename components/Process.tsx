@@ -46,9 +46,9 @@ export const Process: React.FC = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white p-8 rounded-2xl shadow-lg relative group hover:-translate-y-2 transition-transform duration-300"
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: index * 0.15, duration: 0.5, ease: "easeOut" }}
+                className="bg-white p-8 rounded-2xl shadow-lg relative group hover:-translate-y-4 hover:shadow-xl transition-all duration-300 will-change-transform"
               >
                 <div className="w-16 h-16 bg-secondary text-white rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-md group-hover:scale-110 transition-transform">
                   {step.icon}
