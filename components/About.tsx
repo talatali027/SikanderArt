@@ -5,32 +5,33 @@ import { Award, ShieldCheck, Users, Clock, Target, Heart } from 'lucide-react';
 
 export const About: React.FC = () => {
   const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0.1, 0.3], [0.8, 1]);
+  const imgScale = useTransform(scrollYProgress, [0.1, 0.3], [0.95, 1]);
 
   return (
     <section id="about" className="py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-20">
-          
+
           {/* Image Side */}
-          <motion.div 
-            style={{ scale }}
-            className="w-full lg:w-1/2 relative"
+          <motion.div
+            style={{ scale: imgScale }}
+            className="w-full lg:w-1/2 relative will-change-transform"
           >
             <div className="relative rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.15)] group">
-              <img 
-                src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=1200&auto=format&fit=crop" 
-                alt="Our Painting Team" 
+              <img
+                src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=1200&auto=format&fit=crop"
+                alt="Our Painting Team"
                 className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
             </div>
-            
+
             {/* Floating Experience Badge */}
-            <motion.div 
-              initial={{ x: 50, opacity: 0 }}
+            <motion.div
+              initial={{ x: 30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
               className="absolute -bottom-10 -right-6 md:-right-10 bg-white p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 max-w-[320px] backdrop-blur-md bg-white/90"
             >
               <div className="flex items-center gap-6">
@@ -47,27 +48,27 @@ export const About: React.FC = () => {
 
           {/* Content Side */}
           <div className="w-full lg:w-1/2">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="inline-block text-secondary font-black uppercase tracking-[0.4em] text-sm mb-6"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
               OUR STORY
             </motion.span>
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-7xl font-serif font-black text-primary mt-2 mb-10 leading-[1] tracking-tighter"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
               COLORING <span className="text-secondary italic">KARACHI</span> SINCE 2008
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
               className="text-gray-600 text-xl mb-10 leading-relaxed font-medium"
             >
               At <strong className="text-primary">Sikander Art</strong>, we believe every wall is a masterpiece waiting to happen. Our mission is to combine the heritage of Pakistani craftsmanship with modern, eco-friendly materials to deliver stunning results that last.
@@ -80,13 +81,12 @@ export const About: React.FC = () => {
                 { icon: Users, title: "Master Painters", desc: "Expert artisans trained in modern techniques." },
                 { icon: Heart, title: "Client First", desc: "Your satisfaction is our primary metric." }
               ].map((item, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex flex-col gap-4 group"
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: i * 0.08, duration: 0.4, ease: "easeOut" }}
                 >
                   <div className="flex items-center gap-4 text-primary font-black uppercase tracking-widest text-xs">
                     <div className="p-3 bg-secondary/10 rounded-xl group-hover:bg-secondary group-hover:text-white transition-all duration-300">
@@ -101,15 +101,15 @@ export const About: React.FC = () => {
               ))}
             </div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: 0.3, duration: 0.4, ease: "easeOut" }}
               className="mt-16 flex flex-wrap gap-6"
             >
-              <motion.a 
-                href="#contact" 
+              <motion.a
+                href="#contact"
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(30,58,138,0.2)" }}
                 className="bg-primary text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl inline-flex items-center gap-3 transition-all"
               >
@@ -117,9 +117,9 @@ export const About: React.FC = () => {
               </motion.a>
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-4">
-                   {[1,2,3].map(i => (
-                     <img key={i} className="w-12 h-12 rounded-full border-4 border-white object-cover" src={`https://i.pravatar.cc/150?u=${i}`} alt="Client" />
-                   ))}
+                  {[1, 2, 3].map(i => (
+                    <img key={i} className="w-12 h-12 rounded-full border-4 border-white object-cover" src={`https://i.pravatar.cc/150?u=${i}`} alt="Client" />
+                  ))}
                 </div>
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">1k+ Happy Clients</p>
               </div>

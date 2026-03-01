@@ -26,6 +26,7 @@ import ViewProjects from './pages/ViewProjects';
 import CostCalculator from './pages/CostCalculator';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import LogoDemo from './pages/LogoDemo';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -34,7 +35,7 @@ const App: React.FC = () => {
     // Simulate loading time for resources
     const timer = setTimeout(() => {
       setLoading(false);
-      
+
       // Scroll to hash if present after loading
       setTimeout(() => {
         if (window.location.hash) {
@@ -45,7 +46,7 @@ const App: React.FC = () => {
           }
         }
       }, 100);
-      
+
     }, 1500);
     return () => clearTimeout(timer);
   }, []);
@@ -97,6 +98,7 @@ const App: React.FC = () => {
               <Route path="/calculate-cost" element={<CostCalculator />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/logo-demo" element={<LogoDemo />} />
             </Routes>
           </main>
           <Footer />

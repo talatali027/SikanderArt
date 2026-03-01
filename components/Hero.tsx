@@ -21,7 +21,7 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20" id="home">
       {/* Dynamic Background */}
-      <motion.div 
+      <motion.div
         style={{ y: y1, scale }}
         className="absolute inset-0 z-0"
       >
@@ -41,14 +41,14 @@ export const Hero: React.FC = () => {
             key={idx}
             className={`absolute ${el.color}`}
             style={{ top: el.top, left: el.left, right: el.right }}
-            animate={{ 
+            animate={{
               y: [0, -40, 0],
               rotate: el.rotate,
               scale: [1, 1.1, 1]
             }}
-            transition={{ 
-              duration: el.duration, 
-              repeat: Infinity, 
+            transition={{
+              duration: el.duration,
+              repeat: Infinity,
               ease: "easeInOut",
               delay: el.delay
             }}
@@ -67,28 +67,26 @@ export const Hero: React.FC = () => {
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
             className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-xl border border-secondary/30 text-secondary text-[9px] sm:text-xs font-black uppercase tracking-[0.3em] px-4 py-2 rounded-full mb-4 md:mb-6 shadow-2xl"
           >
             <Sparkles size={14} className="animate-pulse" />
             Karachi's #1 Rated Painting Service
           </motion.div>
-          
-          <motion.h1 
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "circOut" }}
+
+          <motion.h1
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black text-white leading-[1.0] mb-4 md:mb-8 tracking-tighter text-glow"
           >
             TRANSFORM <br /> YOUR <span className="text-secondary italic">SPACE</span> WITH <span className="text-secondary">COLOR</span>
           </motion.h1>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
           >
             <h2 className="text-sm sm:text-lg md:text-2xl font-bold text-blue-100 mb-4 md:mb-6 uppercase tracking-[0.2em]">
               PROFESSIONAL PAINTING SERVICES
@@ -131,7 +129,7 @@ export const Hero: React.FC = () => {
         className="absolute bottom-4 md:bottom-10 left-1/2 transform -translate-x-1/2 text-white z-20 flex flex-col items-center"
       >
         <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
-          <motion.div 
+          <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
             className="w-1 md:w-1.5 h-1 md:h-1.5 bg-secondary rounded-full"

@@ -8,7 +8,7 @@ const services = [
     icon: <Home className="w-8 h-8" />,
     title: 'Interior Painting',
     description: 'Flawless finishes for living rooms, kitchens, bedrooms, and more using low-VOC premium paints.',
-    img: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80'
+    img: 'https://images.pexels.com/photos/35419462/pexels-photo-35419462.jpeg'
   },
   {
     icon: <PaintBucket className="w-8 h-8" />,
@@ -38,7 +38,7 @@ const services = [
     icon: <Brush className="w-8 h-8" />,
     title: 'Cabinet Refinishing',
     description: 'Transform your kitchen or bathroom cabinets with a factory-like finish at a fraction of the replacement cost.',
-    img: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800&auto=format&fit=crop'
+    img: 'https://images.pexels.com/photos/6283960/pexels-photo-6283960.jpeg'
   },
 ];
 
@@ -47,7 +47,7 @@ export const Services: React.FC = () => {
     <section id="services" className="py-20 md:py-32 bg-slate-50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, letterSpacing: '0.1em' }}
             whileInView={{ opacity: 1, letterSpacing: '0.3em' }}
             viewport={{ once: true }}
@@ -58,13 +58,13 @@ export const Services: React.FC = () => {
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "circOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-4xl md:text-6xl font-serif font-black text-primary mt-2 mb-8"
           >
             Professional Painting Services
           </motion.h2>
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: '80px' }}
             viewport={{ once: true }}
@@ -73,8 +73,8 @@ export const Services: React.FC = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
             className="text-gray-600 text-lg leading-relaxed font-medium"
           >
             We combine artisanal craftsmanship with modern techniques to deliver superior results for every project type in Karachi.
@@ -85,12 +85,11 @@ export const Services: React.FC = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50, rotateX: 10 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -15 }}
-              className="group bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 card-3d-hover"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+              className="group bg-white rounded-[2rem] overflow-hidden shadow-xl hover:-translate-y-4 hover:shadow-2xl transition-all duration-300 card-3d-hover will-change-transform"
             >
               <div className="h-48 overflow-hidden relative">
                 <img src={service.img} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
@@ -102,8 +101,8 @@ export const Services: React.FC = () => {
               <div className="p-8">
                 <h3 className="text-2xl font-black text-primary mb-4 uppercase tracking-tighter">{service.title}</h3>
                 <p className="text-gray-600 leading-relaxed font-medium">{service.description}</p>
-                <motion.a 
-                  href="#contact" 
+                <motion.a
+                  href="#contact"
                   whileHover={{ x: 10 }}
                   className="inline-flex items-center mt-8 text-secondary font-black uppercase tracking-widest text-xs hover:text-orange-700 transition-colors"
                 >
