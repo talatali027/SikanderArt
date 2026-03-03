@@ -102,7 +102,7 @@ const RATES = {
     // Karachi South
     aram_bagh: 1.10,
     civil_line: 1.10,
-    clifton: 1.20,
+    clifton: 1.22,
     clifton_cantonment: 1.20,
     garden: 1.10,
     karachi_cantonment: 1.15,
