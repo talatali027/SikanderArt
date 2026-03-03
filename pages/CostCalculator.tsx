@@ -27,6 +27,8 @@ interface RoomDimension {
   length: number;
   width: number;
   height: number;
+  includesWallDesigning: boolean;
+  designingWalls: number;
 }
 
 interface CalculatorState {
@@ -41,6 +43,7 @@ interface CalculatorState {
   includesWoodwork: boolean;
   includesPutty: boolean;
   includesPrimer: boolean;
+  includesRoof: boolean;
   location: string;
 }
 
@@ -52,6 +55,8 @@ interface CostBreakdown {
   woodworkCharge: number;
   doorsCharge: number;
   windowsCharge: number;
+  wallDesigningCharge: number;
+  roofCharge: number;
   totalArea: number;
   totalCost: number;
   minCost: number;
@@ -61,9 +66,9 @@ interface CostBreakdown {
 // --- Constants ---
 const RATES = {
   labor: {
-    standard: 12,
-    good: 18,
-    premium: 28,
+    standard: 35,
+    good: 40,
+    premium: 50,
   },
   material: {
     standard: 8,
@@ -74,18 +79,66 @@ const RATES = {
   primer: 4,
   door: 800,
   window: 500,
+  wallDesigning: 45,
   coatMultiplier: {
     1: 1.0,
     2: 1.6,
   },
   ceilingMultiplier: 0.4,
   locationMultiplier: {
-    dha: 1.15,
-    gulshan: 1.0,
-    bahria: 1.1,
-    saddar: 0.95,
-    korangi: 0.9,
-    other: 1.0,
+    // Karachi Central
+    gulberg: 1.10,
+    liaquatabad: 1.10,
+    nazimabad: 1.10,
+    new_karachi: 1.12,
+    north_nazimabad: 1.13,
+    // Karachi East
+    faisal_cantonment: 1.15,
+    ferozabad: 1.10,
+    gulshan_e_iqbal: 1.13,
+    gulzar_e_hijri: 1.12,
+    jamshed_quarters: 1.10,
+    // Karachi South
+    aram_bagh: 1.10,
+    civil_line: 1.10,
+    clifton: 1.20,
+    clifton_cantonment: 1.20,
+    garden: 1.10,
+    karachi_cantonment: 1.15,
+    lyari: 1.10,
+    saddar: 1.10,
+    kharadar: 1.10,
+    // Karachi West
+    baldia: 1.10,
+    harbour: 1.10,
+    mango_pir: 1.10,
+    manora_cantonment: 1.12,
+    mauripur: 1.10,
+    mominabad: 1.10,
+    orangi: 1.10,
+    site: 1.10,
+    // DHA / Defence
+    dha: 1.22,
+    defence: 1.22,
+    // Bahria
+    bahria: 1.18,
+    // Korangi
+    korangi: 1.10,
+    landhi: 1.10,
+    model_colony: 1.10,
+    shah_faisal: 1.10,
+    // Malir
+    airport: 1.10,
+    bin_qasim: 1.10,
+    gadap: 1.10,
+    ibrahim_hyderi: 1.10,
+    korangi_creek: 1.10,
+    malir_cantonment: 1.12,
+    murad_memon: 1.10,
+    shah_mureed: 1.10,
+    // Other
+    other: 1.10,
+    out_of_karachi: 1.25,
   }
 };
 
@@ -101,13 +154,102 @@ const PROPERTY_TYPES = [
   'House / Bungalow', 'Apartment / Flat', 'Office / Commercial', 'Factory / Warehouse', 'Shop / Showroom'
 ];
 
-const LOCATIONS = [
-  { id: 'dha', label: 'DHA / Clifton / Defence' },
-  { id: 'gulshan', label: 'Gulshan / North Nazimabad / PECHS' },
-  { id: 'bahria', label: 'Bahria Town Karachi' },
-  { id: 'saddar', label: 'Saddar / Old City Areas' },
-  { id: 'korangi', label: 'Korangi / Landhi / Malir' },
-  { id: 'other', label: 'Other Areas' }
+// Grouped locations with individual areas
+const LOCATION_GROUPS = [
+  {
+    group: 'Karachi South (Near Kharadar)',
+    areas: [
+      { id: 'kharadar', label: 'Kharadar' },
+      { id: 'lyari', label: 'Lyari' },
+      { id: 'saddar', label: 'Saddar' },
+      { id: 'aram_bagh', label: 'Aram Bagh' },
+      { id: 'garden', label: 'Garden' },
+      { id: 'civil_line', label: 'Civil Line' },
+    ]
+  },
+  {
+    group: 'Karachi South (Cantonment Areas)',
+    areas: [
+      { id: 'clifton', label: 'Clifton' },
+      { id: 'clifton_cantonment', label: 'Clifton Cantonment' },
+      { id: 'karachi_cantonment', label: 'Karachi Cantonment' },
+    ]
+  },
+  {
+    group: 'DHA / Defence',
+    areas: [
+      { id: 'dha', label: 'DHA (Defence Housing Authority)' },
+      { id: 'defence', label: 'Defence' },
+    ]
+  },
+  {
+    group: 'Karachi Central',
+    areas: [
+      { id: 'gulberg', label: 'Gulberg' },
+      { id: 'liaquatabad', label: 'Liaquatabad' },
+      { id: 'nazimabad', label: 'Nazimabad' },
+      { id: 'new_karachi', label: 'New Karachi' },
+      { id: 'north_nazimabad', label: 'North Nazimabad' },
+    ]
+  },
+  {
+    group: 'Karachi East',
+    areas: [
+      { id: 'faisal_cantonment', label: 'Faisal Cantonment' },
+      { id: 'ferozabad', label: 'Ferozabad' },
+      { id: 'gulshan_e_iqbal', label: 'Gulshan-e-Iqbal' },
+      { id: 'gulzar_e_hijri', label: 'Gulzar-e-Hijri' },
+      { id: 'jamshed_quarters', label: 'Jamshed Quarters' },
+    ]
+  },
+  {
+    group: 'Karachi West',
+    areas: [
+      { id: 'baldia', label: 'Baldia' },
+      { id: 'harbour', label: 'Harbour' },
+      { id: 'mango_pir', label: 'Mango Pir' },
+      { id: 'manora_cantonment', label: 'Manora Cantonment' },
+      { id: 'mauripur', label: 'Mauripur' },
+      { id: 'mominabad', label: 'Mominabad' },
+      { id: 'orangi', label: 'Orangi' },
+      { id: 'site', label: 'Sindh Industrial Trading Estate (SITE)' },
+    ]
+  },
+  {
+    group: 'Bahria Town',
+    areas: [
+      { id: 'bahria', label: 'Bahria Town Karachi' },
+    ]
+  },
+  {
+    group: 'Korangi',
+    areas: [
+      { id: 'korangi', label: 'Korangi' },
+      { id: 'landhi', label: 'Landhi' },
+      { id: 'model_colony', label: 'Model Colony' },
+      { id: 'shah_faisal', label: 'Shah Faisal' },
+    ]
+  },
+  {
+    group: 'Malir',
+    areas: [
+      { id: 'airport', label: 'Airport' },
+      { id: 'bin_qasim', label: 'Bin Qasim' },
+      { id: 'gadap', label: 'Gadap' },
+      { id: 'ibrahim_hyderi', label: 'Ibrahim Hyderi' },
+      { id: 'korangi_creek', label: 'Korangi Creek Cantonment' },
+      { id: 'malir_cantonment', label: 'Malir Cantonment' },
+      { id: 'murad_memon', label: 'Murad Memon' },
+      { id: 'shah_mureed', label: 'Shah Mureed' },
+    ]
+  },
+  {
+    group: 'Other',
+    areas: [
+      { id: 'other', label: 'Other Areas in Karachi' },
+      { id: 'out_of_karachi', label: 'Out of Karachi' },
+    ]
+  },
 ];
 
 // --- Component ---
@@ -116,7 +258,7 @@ const CostCalculator: React.FC = () => {
   const [state, setState] = useState<CalculatorState>({
     serviceType: 'Interior Painting',
     propertyType: 'House / Bungalow',
-    rooms: [{ id: 1, name: 'Living Room', length: 12, width: 10, height: 10 }],
+    rooms: [{ id: 1, name: 'Living Room', length: 12, width: 10, height: 10, includesWallDesigning: false, designingWalls: 1 }],
     paintQuality: 'good',
     coats: 2,
     includesCeiling: true,
@@ -125,7 +267,8 @@ const CostCalculator: React.FC = () => {
     includesWoodwork: false,
     includesPutty: true,
     includesPrimer: true,
-    location: 'gulshan'
+    includesRoof: false,
+    location: 'gulshan_e_iqbal'
   });
 
   const [result, setResult] = useState<CostBreakdown | null>(null);
@@ -141,7 +284,7 @@ const CostCalculator: React.FC = () => {
     const newId = Math.max(...state.rooms.map(r => r.id)) + 1;
     setState(prev => ({
       ...prev,
-      rooms: [...prev.rooms, { id: newId, name: 'Bedroom', length: 12, width: 10, height: 10 }]
+      rooms: [...prev.rooms, { id: newId, name: 'Bedroom', length: 12, width: 10, height: 10, includesWallDesigning: false, designingWalls: 1 }]
     }));
   };
 
@@ -156,12 +299,20 @@ const CostCalculator: React.FC = () => {
 
   const calculateCost = () => {
     let totalWallArea = 0;
+    let totalWallDesigningArea = 0;
     
     state.rooms.forEach(room => {
       const perimeter = 2 * (Number(room.length) + Number(room.width));
       const wallArea = perimeter * Number(room.height);
       const ceilingArea = state.includesCeiling ? (Number(room.length) * Number(room.width)) : 0;
       totalWallArea += wallArea + ceilingArea;
+
+      // Wall designing: each designing wall = length * height (assuming all walls same length avg)
+      if (room.includesWallDesigning && room.designingWalls > 0) {
+        const avgWallLength = (Number(room.length) + Number(room.width)) / 2;
+        const designingArea = avgWallLength * Number(room.height) * Number(room.designingWalls);
+        totalWallDesigningArea += designingArea;
+      }
     });
 
     const doorsArea = state.includesDoors * 21;
@@ -187,7 +338,11 @@ const CostCalculator: React.FC = () => {
     const windowsCharge = state.includesWoodwork ? (state.includesWindows * RATES.window * locMultiplier) : 0;
     const woodworkCharge = doorsCharge + windowsCharge;
 
-    const totalCost = laborCost + materialCost + puttyCharge + primerCharge + woodworkCharge;
+    const wallDesigningCharge = totalWallDesigningArea * RATES.wallDesigning * locMultiplier;
+
+    const subtotal = laborCost + materialCost + puttyCharge + primerCharge + woodworkCharge + wallDesigningCharge;
+    const roofCharge = state.includesRoof ? (subtotal * 0.05) : 0;
+    const totalCost = subtotal + roofCharge;
 
     setResult({
       laborCost,
@@ -197,6 +352,8 @@ const CostCalculator: React.FC = () => {
       woodworkCharge,
       doorsCharge,
       windowsCharge,
+      wallDesigningCharge,
+      roofCharge,
       totalArea: netPaintableArea,
       totalCost,
       minCost: totalCost * 0.9,
@@ -216,7 +373,7 @@ const CostCalculator: React.FC = () => {
     setState({
       serviceType: 'Interior Painting',
       propertyType: 'House / Bungalow',
-      rooms: [{ id: 1, name: 'Living Room', length: 12, width: 10, height: 10 }],
+      rooms: [{ id: 1, name: 'Living Room', length: 12, width: 10, height: 10, includesWallDesigning: false, designingWalls: 1 }],
       paintQuality: 'good',
       coats: 2,
       includesCeiling: true,
@@ -225,7 +382,8 @@ const CostCalculator: React.FC = () => {
       includesWoodwork: false,
       includesPutty: true,
       includesPrimer: true,
-      location: 'gulshan'
+      includesRoof: false,
+      location: 'gulshan_e_iqbal'
     });
   };
 
@@ -396,6 +554,59 @@ const CostCalculator: React.FC = () => {
                               />
                             </div>
                           </div>
+
+                          {/* Roof Section */}
+                          <div className="mt-3 pt-3 border-t border-gray-200">
+                            <label className="flex items-center justify-between cursor-pointer">
+                              <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                <Home size={15} className="text-secondary" />
+                                Include Roof Paint? <span className="ml-1 text-xs text-orange-500 font-bold">(+5% on total)</span>
+                              </span>
+                              <input 
+                                type="checkbox" 
+                                checked={state.includesRoof}
+                                onChange={(e) => setState({ ...state, includesRoof: e.target.checked })}
+                                className="w-5 h-5 text-secondary rounded focus:ring-secondary"
+                              />
+                            </label>
+                          </div>
+
+                          {/* Wall Designing Section */}
+                          <div className="mt-3 pt-3 border-t border-gray-200">
+                            <label className="flex items-center justify-between cursor-pointer">
+                              <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                <PaintBucket size={15} className="text-secondary" />
+                                Add Wall Designing / Texture for this room?
+                              </span>
+                              <input 
+                                type="checkbox" 
+                                checked={room.includesWallDesigning}
+                                onChange={(e) => handleRoomChange(room.id, 'includesWallDesigning', e.target.checked)}
+                                className="w-5 h-5 text-secondary rounded focus:ring-secondary"
+                              />
+                            </label>
+                            {room.includesWallDesigning && (
+                              <div className="mt-3 flex items-center gap-3 bg-orange-50 p-3 rounded-lg border border-orange-100">
+                                <label className="text-sm font-medium text-gray-700 flex-1">
+                                  Number of walls to design:
+                                </label>
+                                <div className="flex items-center gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => handleRoomChange(room.id, 'designingWalls', Math.max(1, room.designingWalls - 1))}
+                                    className="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-600 font-bold hover:bg-gray-100"
+                                  >-</button>
+                                  <span className="w-6 text-center font-bold text-secondary">{room.designingWalls}</span>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleRoomChange(room.id, 'designingWalls', Math.min(4, room.designingWalls + 1))}
+                                    className="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-600 font-bold hover:bg-gray-100"
+                                  >+</button>
+                                </div>
+                                <span className="text-xs text-gray-400">(max 4)</span>
+                              </div>
+                            )}
+                          </div>
                         </motion.div>
                       ))}
                       <button 
@@ -496,6 +707,7 @@ const CostCalculator: React.FC = () => {
                         />
                       </label>
 
+
                       {state.includesWoodwork && (
                         <>
                           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
@@ -531,8 +743,12 @@ const CostCalculator: React.FC = () => {
                       onChange={(e) => setState({ ...state, location: e.target.value })}
                       className="w-full p-4 rounded-xl border border-gray-300 text-gray-700 font-medium focus:ring-2 focus:ring-secondary outline-none"
                     >
-                      {LOCATIONS.map(loc => (
-                        <option key={loc.id} value={loc.id}>{loc.label}</option>
+                      {LOCATION_GROUPS.map(group => (
+                        <optgroup key={group.group} label={group.group}>
+                          {group.areas.map(area => (
+                            <option key={area.id} value={area.id}>{area.label}</option>
+                          ))}
+                        </optgroup>
                       ))}
                     </select>
                   </div>
@@ -601,6 +817,18 @@ const CostCalculator: React.FC = () => {
                               <span className="font-medium">Rs. {Math.round(result.woodworkCharge).toLocaleString()}</span>
                             </div>
                           )}
+                          {result.wallDesigningCharge > 0 && (
+                            <div className="flex justify-between">
+                              <span className="text-gray-300">Wall Designing</span>
+                              <span className="font-medium">Rs. {Math.round(result.wallDesigningCharge).toLocaleString()}</span>
+                            </div>
+                          )}
+                          {result.roofCharge > 0 && (
+                            <div className="flex justify-between">
+                              <span className="text-gray-300">Roof / Chhat (5%)</span>
+                              <span className="font-medium">Rs. {Math.round(result.roofCharge).toLocaleString()}</span>
+                            </div>
+                          )}
                         </div>
 
                         <div className="h-px bg-white/20 my-4"></div>
@@ -649,7 +877,7 @@ const CostCalculator: React.FC = () => {
                           Get Exact Quote – Book Visit <ArrowRight size={18} />
                         </Link>
 
-                        {/* ✅ WhatsApp Button */}
+                        {/* WhatsApp Button */}
                         <a 
                           href={getWhatsAppLink()}
                           target="_blank"
