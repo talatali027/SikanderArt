@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { PaintBucket, Building2, Palette, Droplets, Brush, Hammer, Factory, Layers, PenTool, CheckCircle } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface Service {
   id: number;
@@ -88,10 +89,12 @@ const servicesData: Service[] = [
 const Services: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>Painting Services in Karachi | Sikander Arts</title>
-        <meta name="description" content="Expert painting services in Karachi – interior, exterior, texture, waterproofing & more. Sikander Arts." />
-      </Helmet>
+      <SEO
+        title="Painting Services in Karachi | Interior, Exterior, Texture, Waterproofing – Sikander Arts"
+        description="Expert painting services in Karachi – interior wall painting, exterior building painting, texture work, waterproofing, wood polish, epoxy flooring & more. Trusted by 1000+ clients. Call Sikander Arts today for a free quote."
+        keywords="painting services Karachi, interior painting Karachi, exterior painting Karachi, texture painting Karachi, waterproofing Karachi, wood polish Karachi, epoxy flooring Karachi, painting contractor Karachi, wall painting Karachi"
+        url="https://sikanderart.com/services"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero Section */}

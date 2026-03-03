@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Award, Users, Clock, CheckCircle, ShieldCheck, Target, Heart, Star } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface Stat {
   id: number;
@@ -23,10 +24,12 @@ const About: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>About Us | Sikander Arts Painting Contractors</title>
-        <meta name="description" content="Learn about Sikander Arts, Karachi's trusted painting contractor with over 10 years of experience." />
-      </Helmet>
+      <SEO
+        title="About Sikander Arts | Karachi's Trusted Painting Contractor Since 2014"
+        description="Learn about Sikander Arts – Karachi's most trusted painting contractor with 10+ years of experience, 500+ completed projects, and 1000+ happy clients. Serving DHA, Clifton, Gulshan, Bahria Town and all areas of Karachi."
+        keywords="about Sikander Arts, painting contractor Karachi, painting company Karachi, professional painters Karachi, best painting contractor Karachi, Sikander Arts history"
+        url="https://sikanderart.com/about"
+      />
 
       <div className="bg-white min-h-screen overflow-hidden">
         {/* Hero Section */}

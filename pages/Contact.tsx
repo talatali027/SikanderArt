@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, MapPin, Send, Facebook, Instagram, MessageCircle } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface FormData {
   name: string;
@@ -73,10 +74,12 @@ const Contact: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Contact Us | Sikander Arts</title>
-        <meta name="description" content="Get in touch with Sikander Arts for professional painting services in Karachi. Free quotes and consultations." />
-      </Helmet>
+      <SEO
+        title="Contact Sikander Arts | Free Painting Quote Karachi – Call or WhatsApp"
+        description="Contact Sikander Arts for professional painting services in Karachi. Get a free site visit and quote. Call or WhatsApp +92 302 291 1088. Interior, exterior, texture, waterproofing and all painting services available."
+        keywords="contact Sikander Arts, painting quote Karachi, free painting estimate Karachi, painting contractor contact Karachi, WhatsApp painter Karachi, hire painter Karachi"
+        url="https://sikanderart.com/contact"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero Section */}

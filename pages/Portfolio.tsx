@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { X, ArrowRight, MapPin, Calendar, Layers, Star } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface PortfolioProject {
   id: number;
@@ -59,10 +60,12 @@ const Portfolio: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Our Full Portfolio – Sikander Arts</title>
-        <meta name="description" content="Explore our complete collection of masterpiece painting projects across Karachi. Interior, exterior, commercial, and industrial painting portfolio." />
-      </Helmet>
+      <SEO
+        title="Painting Portfolio Karachi | 500+ Completed Projects – Sikander Arts"
+        description="Explore Sikander Arts' complete portfolio of 500+ painting projects across Karachi. Interior, exterior, commercial, texture, waterproofing, epoxy flooring, and wood polish work. DHA, Clifton, Gulshan, Bahria Town and more."
+        keywords="painting portfolio Karachi, painting projects Karachi, interior painting portfolio, exterior painting Karachi, texture work portfolio, Sikander Arts portfolio, painting contractor Karachi projects"
+        url="https://sikanderart.com/portfolio"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero */}
