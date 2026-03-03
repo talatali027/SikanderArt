@@ -867,7 +867,7 @@ const CostCalculator: React.FC = () => {
                         </div>
 
                         <div className="text-center text-xs text-orange-200 mt-3 font-medium px-2">
-                          Note: Yeh qeemat abhi confirm nahi hay, visit ke baad hi confirmation prize di jaye gi.
+                          Note: Yeh qeemat abhi confirm nahi hay, visit ke baad hi confirmation prize di jaye gi, shukriya.
                         </div>
                       </div>
                     </div>
