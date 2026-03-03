@@ -393,12 +393,12 @@ const CostCalculator: React.FC = () => {
   // Build WhatsApp message with estimate details
   const getWhatsAppLink = () => {
     if (!result) return 'https://wa.me/923022911088';
-    const msg = `Hi Sikander Arts! 👋\n\nI used your Cost Calculator and got this estimate:\n\n` +
+    const msg = `As Salam Alaikum Sikander Arts! 👋\n\nMain ne aap ka Cost Calculator use kiya aur mujhe ye estimate mila hai:\n\n` +
       `📋 Service: ${state.serviceType}\n` +
       `🏠 Property: ${state.propertyType}\n` +
       `📐 Total Area: ${Math.round(result.totalArea).toLocaleString()} sq ft\n` +
       `💰 Estimated Cost: Rs. ${Math.round(result.totalCost).toLocaleString()}\n\n` +
-      `Please provide further information and confirm the quote. Thank you!`;
+      `Barae meherbani mazeed tafseelat batayen aur is quote ko confirm karein. Shukriya!`;
     return `https://wa.me/923022911088?text=${encodeURIComponent(msg)}`;
   };
 
@@ -463,8 +463,8 @@ const CostCalculator: React.FC = () => {
                           key={type}
                           onClick={() => setState({ ...state, serviceType: type })}
                           className={`p-3 rounded-xl text-sm font-medium text-left transition-all border ${state.serviceType === type
-                              ? 'bg-primary text-white border-primary shadow-lg'
-                              : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
+                            ? 'bg-primary text-white border-primary shadow-lg'
+                            : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
                             }`}
                         >
                           {type}
@@ -484,8 +484,8 @@ const CostCalculator: React.FC = () => {
                           key={type}
                           onClick={() => setState({ ...state, propertyType: type })}
                           className={`p-3 rounded-xl text-sm font-medium text-left transition-all border ${state.propertyType === type
-                              ? 'bg-primary text-white border-primary shadow-lg'
-                              : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
+                            ? 'bg-primary text-white border-primary shadow-lg'
+                            : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'
                             }`}
                         >
                           {type}
@@ -658,8 +658,8 @@ const CostCalculator: React.FC = () => {
                             key={q.id}
                             onClick={() => setState({ ...state, paintQuality: q.id })}
                             className={`p-4 rounded-xl text-left transition-all border-2 ${state.paintQuality === q.id
-                                ? 'border-secondary bg-orange-50'
-                                : 'border-gray-100 bg-white hover:border-gray-200'
+                              ? 'border-secondary bg-orange-50'
+                              : 'border-gray-100 bg-white hover:border-gray-200'
                               }`}
                           >
                             <div className={`font-bold ${state.paintQuality === q.id ? 'text-secondary' : 'text-gray-700'}`}>
