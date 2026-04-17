@@ -13,6 +13,7 @@ import { Footer } from './components/Footer';
 import { FloatingActions } from './components/FloatingActions';
 import { AnimatePresence, motion } from 'framer-motion';
 import ScrollToTop from './components/ScrollToTop';
+import SEO from './components/SEO';
 
 // Import Pages
 import Services from './pages/Services';
@@ -76,6 +77,11 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={
               <>
+                <SEO 
+                  title="Sikander Arts | Professional Painting Contractor in Karachi"
+                  description="Sikander Arts – Karachi's most trusted painting contractor. Interior, exterior, texture, waterproofing, wood polish & epoxy flooring. 500+ projects, 10+ years experience. Get a free quote today!"
+                  url="https://sikanderart.com/"
+                />
                 <Hero />
                 <ServicesSection />
                 <AboutSection />

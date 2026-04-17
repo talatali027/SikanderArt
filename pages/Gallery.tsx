@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface GalleryItem {
   id: number;
@@ -74,10 +74,12 @@ const Gallery: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Our Work Gallery | Sikander Arts</title>
-        <meta name="description" content="Browse our gallery of completed painting projects across Karachi. Interior, exterior, and texture work examples." />
-      </Helmet>
+      <SEO
+        title="Painting Work Gallery Karachi | Interior, Exterior & Texture Projects"
+        description="Browse the Sikander Arts gallery of completed painting work in Karachi, including interior painting, exterior paint jobs, texture walls, waterproofing, wood polish, and commercial projects."
+        keywords="painting gallery Karachi, interior painting gallery Karachi, exterior painting work Karachi, texture wall design Karachi, waterproofing work Karachi, commercial painting gallery Karachi"
+        url="https://sikanderart.com/gallery"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero */}

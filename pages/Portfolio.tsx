@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { X, ArrowRight, MapPin, Calendar, Layers, Star } from 'lucide-react';
 import SEO from '../components/SEO';
 

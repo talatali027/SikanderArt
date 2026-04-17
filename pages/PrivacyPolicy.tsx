@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ShieldCheck, ArrowLeft, Mail } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface PolicySection {
   id: number;
@@ -122,10 +122,12 @@ const policySections: PolicySection[] = [
 const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>Privacy Policy | Sikander Arts – Painting Contractor Karachi</title>
-        <meta name="description" content="Read Sikander Arts' Privacy Policy. Learn how we collect, use, and protect your personal information. Karachi-based professional painting contractor." />
-      </Helmet>
+      <SEO
+        title="Privacy Policy | Sikander Arts Karachi Painting Services"
+        description="Read the Sikander Arts privacy policy to understand how we collect, use, and protect customer information for painting, waterproofing, and finishing services in Karachi."
+        keywords="privacy policy Sikander Arts, painting contractor privacy policy Karachi, customer data policy Karachi, painting services privacy Karachi"
+        url="https://sikanderart.com/privacy-policy"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero Section */}
