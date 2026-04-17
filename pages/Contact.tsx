@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, MapPin, Send, Facebook, Instagram, MessageCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 

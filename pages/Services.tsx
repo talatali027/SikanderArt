@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { PaintBucket, Building2, Palette, Droplets, Brush, Hammer, Factory, Layers, PenTool, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 

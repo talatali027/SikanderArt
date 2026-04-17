@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Award, Users, Clock, CheckCircle, ShieldCheck, Target, Heart, Star } from 'lucide-react';
 import SEO from '../components/SEO';
 

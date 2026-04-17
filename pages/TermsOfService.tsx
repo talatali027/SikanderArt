@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { FileText, ArrowLeft, Mail } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface TermsSection {
   id: number;
@@ -163,10 +163,11 @@ const termsSections: TermsSection[] = [
 const TermsOfService: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>Terms of Service | Sikander Arts – Painting Contractor Karachi</title>
-        <meta name="description" content="Read the Terms of Service for Sikander Arts. Understand our terms and conditions for painting contractor services in Karachi, Pakistan." />
-      </Helmet>
+      <SEO
+        title="Terms of Service | Sikander Arts – Painting Contractor Karachi"
+        description="Read the Terms of Service for Sikander Arts. Understand our terms and conditions for painting contractor services in Karachi, Pakistan."
+        url="https://sikanderart.com/terms-of-service"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero Section */}

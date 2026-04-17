@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import {
   ROOM_NAMES,
   SERVICE_TYPES,
@@ -221,10 +221,11 @@ const CostCalculator: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Painting Cost Calculator | Sikander Arts – Karachi</title>
-        <meta name="description" content="Use Sikander Arts' free painting cost calculator to estimate your painting project cost in Karachi." />
-      </Helmet>
+      <SEO
+        title="Painting Cost Calculator | Sikander Arts – Karachi"
+        description="Use Sikander Arts' free painting cost calculator to estimate your painting project cost in Karachi."
+        url="https://sikanderart.com/calculate-cost"
+      />
 
       <div className="min-h-screen bg-gray-50 pb-20">
         {/* Hero Section */}
