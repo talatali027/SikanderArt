@@ -12,7 +12,7 @@ const LogoDemo: React.FC = () => {
             </Helmet>
 
             {/* Hero section styling applied for testing light text */}
-            <div className="bg-primary py-20 px-4">
+            <div className="bg-[#fbfbfb] py-20 px-4">
                 <div className="max-w-6xl mx-auto">
                     <h1 className="text-4xl text-white font-serif font-bold mb-12 text-center">3D Logo Animations (Solid Nav Background)</h1>
 

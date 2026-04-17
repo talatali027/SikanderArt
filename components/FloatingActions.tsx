@@ -25,8 +25,8 @@ export const FloatingActions: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         initial={{ scale: 0, opacity: 0, rotateZ: -45 }}
-        animate={{ 
-          scale: 1, 
+        animate={{
+          scale: 1,
           opacity: 1,
           rotateZ: 0,
           boxShadow: [
@@ -44,9 +44,9 @@ export const FloatingActions: React.FC = () => {
           scale: { type: "spring", damping: 15, stiffness: 200 },
           opacity: { duration: 0.5 }
         }}
-        whileHover={{ 
-          scale: 1.15, 
-          rotateY: 20, 
+        whileHover={{
+          scale: 1.15,
+          rotateY: 20,
           rotateX: -10,
           z: 50,
           boxShadow: "0 30px 60px -12px rgba(37, 211, 102, 0.5)"
@@ -65,7 +65,7 @@ export const FloatingActions: React.FC = () => {
         {/* Light Sweep Effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
       </motion.a>
- 
+
       {/* Back To Top Button - Cinematic Reveal */}
       <AnimatePresence>
         {showScroll && (
@@ -75,14 +75,14 @@ export const FloatingActions: React.FC = () => {
             exit={{ opacity: 0, scale: 0.5, y: 50, rotateX: 90 }}
             transition={{ type: "spring", damping: 15, stiffness: 150 }}
             onClick={scrollToTop}
-            whileHover={{ 
-              scale: 1.2, 
-              y: -10, 
+            whileHover={{
+              scale: 1.2,
+              y: -10,
               backgroundColor: "#22c55e",
               boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)"
             }}
             whileTap={{ scale: 0.9 }}
-            className="w-14 h-14 md:w-16 md:h-16 bg-primary text-white rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer transition-all duration-500 border border-white/10 backdrop-blur-md relative overflow-hidden group"
+            className="w-14 h-14 md:w-16 md:h-16 bg-[#fbfbfb] text-white rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer transition-all duration-500 border border-white/10 backdrop-blur-md relative overflow-hidden group"
             title="Back to Top"
           >
             <div className="absolute inset-0 bg-secondary translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out" />
