@@ -39,7 +39,6 @@ const Gallery: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const filteredItems = activeFilter === 'All'
     ? galleryItems
     : galleryItems.filter(item => item.category === activeFilter);
