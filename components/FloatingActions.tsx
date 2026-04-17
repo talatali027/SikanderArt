@@ -52,7 +52,7 @@ export const FloatingActions: React.FC = () => {
           boxShadow: "0 30px 60px -12px rgba(37, 211, 102, 0.5)"
         }}
         whileTap={{ scale: 0.9, z: 0 }}
-        className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white rounded-[2rem] shadow-2xl flex items-center justify-center cursor-pointer z-50 transition-shadow duration-500 relative group overflow-hidden border border-white/20"
+        className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white rounded-[2rem] shadow-2xl flex items-center justify-center cursor-pointer z-50 transition-shadow duration-500 relative group overflow-hidden border border-white/20"
         title="Chat on WhatsApp"
       >
         <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
@@ -60,10 +60,10 @@ export const FloatingActions: React.FC = () => {
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <MessageCircle size={36} className="relative z-10 drop-shadow-lg" />
+          <MessageCircle size={25} className="relative z-10" />
         </motion.div>
         {/* Light Sweep Effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" /> */}
       </motion.a>
 
       {/* Back To Top Button - Cinematic Reveal */}
@@ -82,7 +82,7 @@ export const FloatingActions: React.FC = () => {
               boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)"
             }}
             whileTap={{ scale: 0.9 }}
-            className="w-14 h-14 md:w-16 md:h-16 bg-[#fbfbfb] text-white rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer transition-all duration-500 border border-white/10 backdrop-blur-md relative overflow-hidden group"
+            className="w-10 h-10 md:w-12 md:h-12 text-black rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer transition-all duration-500 border border-white/10 backdrop-blur-md relative overflow-hidden group"
             title="Back to Top"
           >
             <div className="absolute inset-0 bg-secondary translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out" />

@@ -88,11 +88,11 @@ const Gallery: React.FC = () => {
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl font-serif font-black mb-4 tracking-tighter"
+              className="text-4xl md:text-6xl text-gray-700 font-serif font-black mb-4 tracking-tighter"
             >
               Our Work <span className="text-secondary">Gallery</span>
             </motion.h1>
-            <p className="text-lg md:text-xl text-gray-300 font-medium">Browse our completed painting projects across Karachi</p>
+            <p className="text-lg md:text-xl text-gray-500 font-medium">Browse our completed painting projects across Karachi</p>
           </div>
         </section>
 

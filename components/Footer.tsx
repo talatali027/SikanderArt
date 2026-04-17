@@ -159,7 +159,7 @@ export const Footer: React.FC = () => {
           </motion.div>
         </div>
 
-        <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div className="border-t border-white/5 sm:pt-5 pt-12 flex flex-col md:flex-row justify-between items-center gap-10">
           <p className="text-gray-500 text-xs font-black tracking-[0.3em] uppercase text-center md:text-left">
             &copy; {new Date().getFullYear()} SIKANDER ART PAINTING CONTRACTORS. ALL RIGHTS RESERVED.
           </p>

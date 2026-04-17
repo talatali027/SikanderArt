@@ -155,7 +155,7 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, rotateX: 0 }}
             exit={{ opacity: 0, rotateX: -90 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-[64px] lg:hidden bg-primary/98 backdrop-blur-3xl border-t border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-hidden z-40 h-[calc(100vh-64px)]"
+            className="fixed inset-x-0 top-[64px] lg:hidden bg-secondary/90 backdrop-blur-5xl border-t border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-hidden z-40 h-[calc(100vh-64px)]"
           >
             <div className="flex flex-col p-10 space-y-8 h-full justify-center perspective-2000">
               {navLinks.map((link, i) => (
@@ -168,7 +168,7 @@ export const Navbar: React.FC = () => {
                     initial={{ opacity: 0, x: -50, rotateY: 45 }}
                     animate={{ opacity: 1, x: 0, rotateY: 0 }}
                     transition={{ delay: 0.2 + i * 0.1 }}
-                    className="text-white text-4xl font-black hover:text-secondary px-6 py-4 rounded-2xl hover:bg-white/5 transition-all flex items-center gap-8 group"
+                    className="text-gray-800 text-4xl font-black hover:text-secondary px-6 py-4 rounded-2xl hover:bg-white/5 transition-all flex items-center gap-8 group"
                   >
                     <span className="text-secondary/20 font-serif italic text-2xl group-hover:text-secondary group-hover:opacity-100 transition-all">0{i + 1}</span>
                     <span className="tracking-tighter uppercase">{link.name}</span>
