@@ -89,8 +89,8 @@ const Services: React.FC = () => {
   return (
     <>
       <SEO
-        title="Painting Services in Karachi | Interior, Exterior, Texture, Waterproofing – Sikander Arts"
-        description="Expert painting services in Karachi – interior wall painting, exterior building painting, texture work, waterproofing, wood polish, epoxy flooring & more. Trusted by 1000+ clients. Call Sikander Arts today for a free quote."
+        title="Painting Services in Karachi | Latest 2026 Rates – Sikander Arts"
+        description="Expert painting services in Karachi with latest 2026 rates. Interior wall painting, exterior building painting, texture work, waterproofing, wood polish & more. Trusted by 1000+ clients. Get a free quote today."
         keywords="painting services Karachi, interior painting Karachi, exterior painting Karachi, texture painting Karachi, waterproofing Karachi, wood polish Karachi, epoxy flooring Karachi, painting contractor Karachi, wall painting Karachi"
         url="https://sikanderart.com/services"
       />

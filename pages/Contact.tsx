@@ -74,9 +74,9 @@ const Contact: React.FC = () => {
   return (
     <>
       <SEO
-        title="Contact Sikander Arts | Free Painting Quote Karachi – Call or WhatsApp"
-        description="Contact Sikander Arts for professional painting services in Karachi. Get a free site visit and quote. Call or WhatsApp +92 302 291 1088. Interior, exterior, texture, waterproofing and all painting services available."
-        keywords="contact Sikander Arts, painting quote Karachi, free painting estimate Karachi, painting contractor contact Karachi, WhatsApp painter Karachi, hire painter Karachi"
+        title="Painter Contact Number Karachi | Get Free Quote – Sikander Arts"
+        description="Looking for a professional painter contact number in Karachi? Call or WhatsApp Sikander Arts at +92 302 291 1088 for expert house painting, texture work, and waterproofing quotes. Get a free site visit today!"
+        keywords="painter contact number Karachi, contact Sikander Arts, painting quote Karachi, free painting estimate Karachi, painting contractor contact Karachi, WhatsApp painter Karachi, hire painter Karachi"
         url="https://sikanderart.com/contact"
       />
 

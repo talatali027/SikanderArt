@@ -78,8 +78,8 @@ const App: React.FC = () => {
             <Route path="/" element={
               <>
                 <SEO 
-                  title="Sikander Arts | Professional Painting Contractor in Karachi"
-                  description="Sikander Arts – Karachi's most trusted painting contractor. Interior, exterior, texture, waterproofing, wood polish & epoxy flooring. 500+ projects, 10+ years experience. Get a free quote today!"
+                  title="Sikander Arts | Professional Painting Contractor & Latest 2026 Paint Labour Rates in Karachi"
+                  description="Sikander Arts – Karachi's most trusted painting contractor. Check latest 2026 paint labour rates in Karachi. Interior, exterior, texture, waterproofing & wood polish. 500+ projects completed. Get a free quote today!"
                   url="https://sikanderart.com/"
                 />
                 <Hero />

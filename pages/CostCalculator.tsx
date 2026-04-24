@@ -222,8 +222,8 @@ const CostCalculator: React.FC = () => {
   return (
     <>
       <SEO
-        title="Painting Cost Calculator | Sikander Arts – Karachi"
-        description="Use Sikander Arts' free painting cost calculator to estimate your painting project cost in Karachi."
+        title="Latest 2026 Painting Cost Calculator | Painter Charges Karachi – Sikander Arts"
+        description="Get instant online estimates for wall painting and painter charges in Karachi. Use our free calculator for latest 2026 paint labour rates. Fast, free, and accurate painting cost estimation."
         url="https://sikanderart.com/calculate-cost"
       />
 
@@ -374,7 +374,7 @@ const CostCalculator: React.FC = () => {
                           </div>
 
                           {/* Roof Section */}
-                          <div className="mt-3 pt-3 border-t border-gray-200">
+                          {/* <div className="mt-3 pt-3 border-t border-gray-200">
                             <label className="flex items-center justify-between cursor-pointer">
                               <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
                                 <Home size={15} className="text-secondary" />
@@ -387,7 +387,7 @@ const CostCalculator: React.FC = () => {
                                 className="w-5 h-5 text-secondary rounded focus:ring-secondary"
                               />
                             </label>
-                          </div>
+                          </div> */}
 
                           {/* Wall Designing Section */}
                           <div className="mt-3 pt-3 border-t border-gray-200">

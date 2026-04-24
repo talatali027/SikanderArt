@@ -60,8 +60,8 @@ const Portfolio: React.FC = () => {
   return (
     <>
       <SEO
-        title="Painting Portfolio Karachi | 500+ Completed Projects – Sikander Arts"
-        description="Explore Sikander Arts' complete portfolio of 500+ painting projects across Karachi. Interior, exterior, commercial, texture, waterproofing, epoxy flooring, and wood polish work. DHA, Clifton, Gulshan, Bahria Town and more."
+        title="Painting Portfolio Karachi | 500+ Projects & Latest 2026 Rates – Sikander Arts"
+        description="Explore Sikander Arts' complete portfolio of 500+ painting projects across Karachi. Check latest 2026 rates for interior, exterior, texture & waterproofing. DHA, Clifton, Gulshan, Bahria Town & more."
         keywords="painting portfolio Karachi, painting projects Karachi, interior painting portfolio, exterior painting Karachi, texture work portfolio, Sikander Arts portfolio, painting contractor Karachi projects"
         url="https://sikanderart.com/portfolio"
       />

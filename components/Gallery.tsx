@@ -103,7 +103,7 @@ export const Gallery: React.FC = () => {
                 translateZ: 150,
                 transition: { type: "spring", stiffness: 300, damping: 30 }
               }}
-              className="group relative overflow-hidden rounded-[4rem] cursor-pointer bg-[#111] aspect-[4/5] will-change-transform border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] [-webkit-mask-image:-webkit-radial-gradient(white,black)]"
+              className="group relative overflow-hidden rounded-[4rem] cursor-pointer aspect-[4/5] will-change-transform border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] [-webkit-mask-image:-webkit-radial-gradient(white,black)]"
               onClick={() => setSelectedId(project.id)}
             >
               {/* Animated Border Glow */}
