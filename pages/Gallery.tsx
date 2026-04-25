@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface GalleryItem {
   id: number;
@@ -39,9 +39,8 @@ const Gallery: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const filteredItems = activeFilter === 'All' 
-    ? galleryItems 
+  const filteredItems = activeFilter === 'All'
+    ? galleryItems
     : galleryItems.filter(item => item.category === activeFilter);
 
   const openLightbox = (index: number) => {
@@ -75,24 +74,26 @@ const Gallery: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Our Work Gallery | Sikander Arts</title>
-        <meta name="description" content="Browse our gallery of completed painting projects across Karachi. Interior, exterior, and texture work examples." />
-      </Helmet>
+      <SEO
+        title="Painting Work Gallery Karachi | Interior, Exterior & Texture Projects"
+        description="Browse the Sikander Arts gallery of completed painting work in Karachi, including interior painting, exterior paint jobs, texture walls, waterproofing, wood polish, and commercial projects."
+        keywords="painting gallery Karachi, interior painting gallery Karachi, exterior painting work Karachi, texture wall design Karachi, waterproofing work Karachi, commercial painting gallery Karachi"
+        url="https://sikanderart.com/gallery"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero */}
-        <section className="pt-32 pb-20 bg-primary text-white text-center relative overflow-hidden">
+        <section className="pt-32 pb-20 bg-[#fbfbfb] text-white text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
           <div className="container mx-auto px-4 relative z-10">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl font-serif font-black mb-4 tracking-tighter"
+              className="text-4xl md:text-6xl text-gray-700 font-serif font-black mb-4 tracking-tighter"
             >
               Our Work <span className="text-secondary">Gallery</span>
             </motion.h1>
-            <p className="text-lg md:text-xl text-gray-300 font-medium">Browse our completed painting projects across Karachi</p>
+            <p className="text-lg md:text-xl text-gray-500 font-medium">Browse our completed painting projects across Karachi</p>
           </div>
         </section>
 
@@ -104,9 +105,8 @@ const Gallery: React.FC = () => {
                 <button
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
-                  className={`relative px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs transition-colors ${
-                    activeFilter === cat ? 'text-white' : 'text-gray-500 hover:text-primary'
-                  }`}
+                  className={`relative px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs transition-colors ${activeFilter === cat ? 'text-white' : 'text-gray-500 hover:text-primary'
+                    }`}
                 >
                   {activeFilter === cat && (
                     <motion.div
@@ -125,7 +125,7 @@ const Gallery: React.FC = () => {
         {/* Gallery Grid */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <motion.div 
+            <motion.div
               layout
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
@@ -141,9 +141,9 @@ const Gallery: React.FC = () => {
                     className="group relative aspect-[4/3] rounded-[2rem] overflow-hidden cursor-pointer shadow-lg"
                     onClick={() => openLightbox(index)}
                   >
-                    <img 
-                      src={item.image} 
-                      alt={item.title} 
+                    <img
+                      src={item.image}
+                      alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
@@ -177,36 +177,36 @@ const Gallery: React.FC = () => {
               className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10"
               onClick={() => setLightboxOpen(false)}
             >
-              <button 
+              <button
                 className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
                 onClick={() => setLightboxOpen(false)}
               >
                 <X size={40} />
               </button>
 
-              <button 
+              <button
                 className="absolute left-4 md:left-10 text-white/50 hover:text-white transition-colors p-2"
                 onClick={prevImage}
               >
                 <ChevronLeft size={40} />
               </button>
 
-              <button 
+              <button
                 className="absolute right-4 md:right-10 text-white/50 hover:text-white transition-colors p-2"
                 onClick={nextImage}
               >
                 <ChevronRight size={40} />
               </button>
 
-              <div 
+              <div
                 className="max-w-5xl w-full max-h-[80vh] relative"
                 onClick={(e) => e.stopPropagation()}
               >
-                <motion.img 
+                <motion.img
                   key={filteredItems[currentIndex].id}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  src={filteredItems[currentIndex].image} 
+                  src={filteredItems[currentIndex].image}
                   alt={filteredItems[currentIndex].title}
                   className="w-full h-full object-contain rounded-lg shadow-2xl"
                 />

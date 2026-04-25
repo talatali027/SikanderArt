@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ShieldCheck, ArrowLeft, Mail } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface PolicySection {
   id: number;
@@ -112,8 +112,8 @@ const policySections: PolicySection[] = [
       "Company: Sikander Arts",
       "Location: Karachi, Pakistan",
       "Phone: +92 302 291 10 88",
-      "Email: sikanderpaint@example.com",
-      "WhatsApp: +92 3XX XXXXXXX",
+      "Email: ghulamsikandar13@gmail.com",
+      "WhatsApp: +92 302 291 10 88",
       "Working Hours: Monday to Saturday, 9:00 AM to 7:00 PM"
     ]
   }
@@ -122,17 +122,16 @@ const policySections: PolicySection[] = [
 const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>Privacy Policy | Sikander Arts – Painting Contractor Karachi</title>
-        <meta name="description" content="Read Sikander Arts' Privacy Policy. Learn how we collect, use, and protect your personal information. Karachi-based professional painting contractor." />
-      </Helmet>
+      <SEO
+        title="Privacy Policy | Sikander Arts Karachi Painting Services"
+        description="Read the Sikander Arts privacy policy to understand how we collect, use, and protect customer information for painting, waterproofing, and finishing services in Karachi."
+        keywords="privacy policy Sikander Arts, painting contractor privacy policy Karachi, customer data policy Karachi, painting services privacy Karachi"
+        url="https://sikanderart.com/privacy-policy"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-primary text-white overflow-hidden">
-          <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary/20 z-0"></div>
-          
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-[#fbfbfb] text-gray-900 overflow-hidden">
           <div className="container mx-auto px-4 relative z-10 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -142,7 +141,7 @@ const PrivacyPolicy: React.FC = () => {
             >
               <ShieldCheck size={32} />
             </motion.div>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "circOut" }}
@@ -150,11 +149,11 @@ const PrivacyPolicy: React.FC = () => {
             >
               Privacy <span className="text-secondary">Policy</span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-lg md:text-xl text-gray-300 font-medium mb-2"
+              className="text-lg md:text-xl text-gray-500 font-medium mb-2"
             >
               Sikander Arts – Karachi, Pakistan
             </motion.p>
@@ -193,7 +192,7 @@ const PrivacyPolicy: React.FC = () => {
                   transition={{ delay: index * 0.05 }}
                   className="bg-white p-8 md:p-10 rounded-[2rem] shadow-lg border border-gray-50 hover:shadow-xl transition-shadow duration-300"
                 >
-                  <h2 className="text-2xl font-black text-primary mb-6 flex items-center gap-3">
+                  <h2 className="text-2xl font-black text-gray-800 mb-6 flex items-center gap-3">
                     <span className="text-secondary text-sm bg-secondary/10 w-8 h-8 rounded-full flex items-center justify-center">{section.id}</span>
                     {section.title}
                   </h2>
@@ -210,7 +209,7 @@ const PrivacyPolicy: React.FC = () => {
             </div>
 
             {/* CTA Section */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -220,7 +219,7 @@ const PrivacyPolicy: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto bg-white text-primary border-2 border-primary/10 px-8 py-4 rounded-full font-black uppercase tracking-widest text-sm shadow-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto bg-white text-gray-800 border-2 border-primary/10 px-8 py-4 rounded-full font-black uppercase tracking-widest text-sm shadow-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
                 >
                   <ArrowLeft size={18} /> Back to Home
                 </motion.button>
@@ -229,7 +228,7 @@ const PrivacyPolicy: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto bg-secondary text-white px-10 py-4 rounded-full font-black uppercase tracking-widest text-sm shadow-xl hover:bg-orange-600 transition-colors flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto bg-secondary text-gray-900 px-10 py-4 rounded-full font-black uppercase tracking-widest text-sm shadow-xl hover:bg-orange-600 transition-colors flex items-center justify-center gap-2"
                 >
                   Contact Us <Mail size={18} />
                 </motion.button>

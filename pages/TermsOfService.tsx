@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { FileText, ArrowLeft, Mail } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface TermsSection {
   id: number;
@@ -153,7 +153,7 @@ const termsSections: TermsSection[] = [
       "Company: Sikander Arts",
       "Location: Karachi, Pakistan",
       "Phone: +92 302 291 10 88",
-      "Email: sikanderpaint@example.com",
+      "Email: bilal_azeemlab@gmail.com",
       "WhatsApp: +92 3XX XXXXXXX",
       "Working Hours: Monday to Saturday, 9:00 AM to 7:00 PM"
     ]
@@ -163,27 +163,25 @@ const termsSections: TermsSection[] = [
 const TermsOfService: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>Terms of Service | Sikander Arts – Painting Contractor Karachi</title>
-        <meta name="description" content="Read the Terms of Service for Sikander Arts. Understand our terms and conditions for painting contractor services in Karachi, Pakistan." />
-      </Helmet>
+      <SEO
+        title="Terms of Service | Sikander Arts – Painting Contractor Karachi"
+        description="Read the Terms of Service for Sikander Arts. Understand our terms and conditions for painting contractor services in Karachi, Pakistan."
+        url="https://sikanderart.com/terms-of-service"
+      />
 
       <div className="bg-slate-50 min-h-screen">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-primary text-white overflow-hidden">
-          <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary/20 z-0"></div>
-          
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-[#fbfbfb] text-gray-800 overflow-hidden">
           <div className="container mx-auto px-4 relative z-10 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-secondary mx-auto mb-6 backdrop-blur-sm"
+              className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary mx-auto mb-6 backdrop-blur-sm"
             >
               <FileText size={32} />
             </motion.div>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "circOut" }}
@@ -191,11 +189,11 @@ const TermsOfService: React.FC = () => {
             >
               Terms of <span className="text-secondary">Service</span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-lg md:text-xl text-gray-300 font-medium mb-2"
+              className="text-lg md:text-xl text-gray-500 font-medium mb-2"
             >
               Sikander Arts – Karachi, Pakistan
             </motion.p>
@@ -205,7 +203,7 @@ const TermsOfService: React.FC = () => {
               transition={{ delay: 0.4 }}
               className="text-sm font-bold uppercase tracking-widest text-secondary/80"
             >
-              Effective Date: January 1, 2025
+              Effective Date: March 1, 2026
             </motion.p>
           </div>
         </section>
@@ -234,7 +232,7 @@ const TermsOfService: React.FC = () => {
                   transition={{ delay: index * 0.05 }}
                   className="bg-white p-8 md:p-10 rounded-[2rem] shadow-lg border border-gray-50 hover:shadow-xl transition-shadow duration-300"
                 >
-                  <h2 className="text-2xl font-black text-primary mb-6 flex items-center gap-3">
+                  <h2 className="text-2xl font-black text-gray-700 mb-6 flex items-center gap-3">
                     <span className="text-secondary text-sm bg-secondary/10 w-8 h-8 rounded-full flex items-center justify-center">{section.id}</span>
                     {section.title}
                   </h2>
@@ -251,7 +249,7 @@ const TermsOfService: React.FC = () => {
             </div>
 
             {/* CTA Section */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -261,7 +259,7 @@ const TermsOfService: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto bg-white text-primary border-2 border-primary/10 px-8 py-4 rounded-full font-black uppercase tracking-widest text-sm shadow-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto bg-white text-gray-700 border-2 border-primary/10 px-8 py-4 rounded-full font-black uppercase tracking-widest text-sm shadow-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
                 >
                   <ArrowLeft size={18} /> Back to Home
                 </motion.button>
